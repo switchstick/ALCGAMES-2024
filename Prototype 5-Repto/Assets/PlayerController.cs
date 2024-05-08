@@ -69,5 +69,9 @@ public class PlayerController : MonoBehaviour
 
         if(Physics.Raycast(ray, 1.1f))
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        Ray ray2 = new Ray(transform.position, Vector3.forward);
+
+        if(Physics.Raycast(ray2, 10.0f))
+            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 }
