@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump"))
             TryJump();
+            // TryJump2();
 
         if(Input.GetButton("Fire1"))
         {
@@ -66,12 +67,23 @@ public class PlayerController : MonoBehaviour
     void TryJump()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
+        Ray ray2 = new Ray(transform.position, Vector3.forward);
 
         if(Physics.Raycast(ray, 1.1f))
             rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        Ray ray2 = new Ray(transform.position, Vector3.forward);
+        else
+            
 
-        if(Physics.Raycast(ray2, 10.0f))
-            rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            if(Physics.Raycast(ray2, 15.0f))
+                rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
+            
     }
+    // void TryJump2()
+    // {
+    //     Ray ray2 = new Ray(transform.position, Vector3.forward);
+
+    //     if(Physics.Raycast(ray2, 5.0f))
+    //         rig.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+    // }
 }
