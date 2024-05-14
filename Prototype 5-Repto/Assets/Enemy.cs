@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [Header("Path Info")]
     public float yPathOffset;
     private List<Vector3> path;
-    //private Weapon weapon;
+    private Projectile weapon;
     private GameObject target;
 
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         curHP = maxHP;
         //gather components
-        //weapon = GetComponent<Weapon>();
+        weapon = GetComponent<Projectile>();
         target = FindObjectOfType<PlayerController>().gameObject;
         InvokeRepeating("UpdatePath", 0.0f, 0.5f);
     }
@@ -72,10 +72,10 @@ public class Enemy : MonoBehaviour
         float dist = Vector3.Distance(transform.position, target.transform.position);
         if(dist <= attackRange)
         {
-            /*
+            
             if(weapon.CanShoot())
                 weapon.Shoot();
-                */
+                
         }
         else
         {
